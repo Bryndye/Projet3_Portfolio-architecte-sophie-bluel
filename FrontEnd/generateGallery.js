@@ -7,7 +7,6 @@ fetch('http://localhost:5678/api/works')
     }
   })
   .then(function(value) {
-    //console.log(value);
     for(i=0; i< value.length;++i)
     {
         createElement(value[i]);

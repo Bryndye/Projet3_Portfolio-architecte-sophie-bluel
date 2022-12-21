@@ -1,16 +1,25 @@
-// const inputsMail = document.getElementById('formLogin');
-// const inputsPassword = document.getElementById('inputPassword');
-// console.log(inputsMail);
-// console.log(document.getElementById('inputPassword'));
 
+let inputs = document.getElementsByClassName('inputText');
 
-// const inputs = document.querySelectorAll('inputText');
-// console.log(inputs);
-console.log(document.getElementById('inputMail'));
-// console.log(document.getElementById('inputPassword'));
-// console.log(document.querySelector('#setInputLogin input'));
-// console.log(document.getElementById('sectionLogin'));
-document.getElementById('inputMail').
-    addEventListener("input", function() {
-        console.log(document.getElementById('inputMail').target.value);
+document
+  .getElementById("buttonLogin")
+  .addEventListener("click", function(e) {
+    let user = {
+        email: inputs[0].value,
+        password: inputs[1].value
+      };
+    console.log(JSON.stringify(user));
+    fetch('http://localhost:5678/api/users/login', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json', 
+            },
+            body: JSON.stringify(user)
+        });
 });
+
+
+// email: sophie.bluel@test.tld
+
+// password: S0phie 
