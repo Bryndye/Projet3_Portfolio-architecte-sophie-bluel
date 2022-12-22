@@ -16,6 +16,20 @@ document
                 'Content-Type': 'application/json', 
             },
             body: JSON.stringify(user)
+        })
+        .then(function(res) {
+          if (res.ok) {
+            return res.json();
+          }
+        })
+        .then(function(value) {
+          console.log(value);
+          console.log(value.token);
+          document.cookie = value.token;
+          document.location.href="index.html"
+        })
+        .catch(function(err) {
+          alert("Wrong mail or password");
         });
 });
 
