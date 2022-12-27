@@ -23,16 +23,15 @@ document
           }
         })
         .then(function(value) {
-          console.log(value);
-          console.log(value.token);
           document.cookie = value.token;
-          document.location.href="index.html"
+          document.location.href="index.html";
         })
         .catch(function(err) {
           alert("Wrong mail or password");
         });
 });
 
+// session / localStorage   jwt/ Node -> doc session
 
 // email: sophie.bluel@test.tld
 
