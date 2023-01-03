@@ -23,7 +23,9 @@ document
           }
         })
         .then(function(value) {
-          document.cookie = value.token;
+          localStorage.setItem("email", user.email);
+          localStorage.setItem("password", user.password);
+          localStorage.setItem("token", value.token);
           document.location.href="index.html";
         })
         .catch(function(err) {

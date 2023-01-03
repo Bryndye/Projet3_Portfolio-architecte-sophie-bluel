@@ -8,6 +8,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script src="https://kit.fontawesome.com/9716f2641e.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
@@ -15,19 +17,36 @@
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
+			<li><a href="#portfolio">projets</a></li>
+			<li><a href="#contact">contact</a></li>
+			<li id="login">login</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
 <main>
+	<div id="myModal" class="modal">
+		<!-- Contenu de la fenêtre modale -->
+		<div class="modal-content">
+			<!-- Le "bouton" X / css appliqué : texte -->
+			<span class="close">&times;</span>
+			<div id="contentCenter">
+				<h2>Galerie</h2>
+				<div id="galleryEdit">
+				</div>
+				<input type="submit" value="Ajouter une photo">
+				<p>Supprimer la galerie</p>
+			</div>		
+		</div>
+	</div>
+
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<p class="edit"><i class="fa-light fa-pen-to-square">modifier</i></p>
 		</figure>
 		<article>
+			<p class="edit"><i class="fa-light fa-pen-to-square">modifier</i></p>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -35,7 +54,11 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div id="portfolioHeader">
+			<h2>Mes Projets</h2>
+			<p class="edit"><i class="fa-light fa-pen-to-square">modifier</i></p>
+		</div>
+
 		<div id="filtres">
 			<script src="filtreGallery.js"></script>		
 			<button class="filtre" onclick="filterSelection('all')">Tous</button>
@@ -70,4 +93,7 @@
 	</nav>
 </footer>
 </body>
+<script src="isConnected.js"></script>
+<script src="modal.js"></script>
+<!-- <script src="editGalery.js"></script> -->
 </html>
