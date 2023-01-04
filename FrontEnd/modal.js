@@ -1,6 +1,8 @@
 const modal = document.getElementById('myModal');
+const galleryEdit = document.getElementById('galleryEdit');
 const btns = document.getElementsByClassName('edit');
 const span = document.querySelector('.close');
+const gallery = document.querySelector('.gallery');
 buttonsGetEvent = false;
 
 function generateEventOnDeleteButtons(){
@@ -9,34 +11,37 @@ function generateEventOnDeleteButtons(){
 
   for(i = 0; i < deleteButtons.length; i++)
   {
-      console.log(deleteButtons[0]);
-
-      deleteButtons[0].addEventListener('click', event => {
-          // Récupérer l'identifiant de l'image à supprimer
-          const id = event.target.dataset.id;
+    deleteButtons[0].addEventListener('click', event => {
+      // Récupérer l'identifiant de l'image à supprimer
+      const id = event.target.dataset.id;
+      const elements = document.querySelectorAll('[data-id="1"]');
   
-          // Envoyer une requête DELETE pour supprimer l'image
-          fetch(`http://localhost:5678/api/works/${id}`, {
-              method: 'DELETE',
-              headers: new Headers({
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-              })
-          })
-          .then(response => response.json())
-          .then(data => {
-              // Récupérer l'élément de grille contenant l'image
-              // let galleryEdit = event.target.closest('.galleryEdit');
-              // let gallery = event.target.closest('.gallery');
+      // Supprimer l'élément de la grille de la page
+      galleryEdit.removeChild(elements[0]);
+      gallery.removeChild(elements[1]);
+      console.log("Its working");
+      // Envoyer une requête DELETE pour supprimer l'image
+      // fetch(`http://localhost:5678/api/works/${id}`, {
+      //   method: 'DELETE',
+      //   headers: new Headers({
+      //     'Authorization': `Bearer ${localStorage.getItem('token')}`
+      //   })
+      // })
+      // .then(response => response.json())
+      // .then(data => {
+      //   // Récupérer l'élément de grille contenant l'image
+      //   let galleryEdit = event.target.closest('.galleryEdit');
+      //   let gallery = event.target.closest('.gallery');
   
-              // // Supprimer l'élément de la grille de la page
-              // galleryEdit.parentNode.removeChild(galleryEdit);
-              // gallery.parentNode.removeChild(gallery);
-              console.log("Its working");
-          })
-          .catch(error => {
-              console.error(error);
-          });
-      });
+      //   // Supprimer l'élément de la grille de la page
+      //   galleryEdit.removeChild(galleryEdit);
+      //   galleryEdit.removeChild(gallery);
+      //   console.log("Its working");
+      // })
+      // .catch(error => {
+      //   console.error(error);
+      // });
+    });
   }
 }
 generateGallery(true);
