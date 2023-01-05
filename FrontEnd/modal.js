@@ -5,42 +5,23 @@ const span = document.querySelector('.close');
 const gallery = document.querySelector('.gallery');
 buttonsGetEvent = false;
 
-function generateEventOnDeleteButtons(){
-  const deleteButtons = document.querySelectorAll('.delete-icon');
-  console.log(deleteButtons[0]);
+function deleteProject(id){
+  let parent = document.querySelectorAll('[data-id="'+id+'"]');
+  console.log(parent);
+  parent[0].parentNode.removeChild(parent[0]);
+  parent[1].parentNode.removeChild(parent[1]);
 
-  for(i = 0; i < deleteButtons.length; i++)
+  // Envoyer une requête DELETE pour supprimer l'image
+  if(tokenIsValid())
   {
-    deleteButtons[0].addEventListener('click', event => {
-      // Récupérer l'identifiant de l'image à supprimer
-      const id = event.target.dataset.id;
-      const elements = document.querySelectorAll('[data-id="1"]');
-  
-      // Supprimer l'élément de la grille de la page
-      galleryEdit.removeChild(elements[0]);
-      gallery.removeChild(elements[1]);
-      console.log("Its working");
-      // Envoyer une requête DELETE pour supprimer l'image
-      // fetch(`http://localhost:5678/api/works/${id}`, {
-      //   method: 'DELETE',
-      //   headers: new Headers({
-      //     'Authorization': `Bearer ${localStorage.getItem('token')}`
-      //   })
-      // })
-      // .then(response => response.json())
-      // .then(data => {
-      //   // Récupérer l'élément de grille contenant l'image
-      //   let galleryEdit = event.target.closest('.galleryEdit');
-      //   let gallery = event.target.closest('.gallery');
-  
-      //   // Supprimer l'élément de la grille de la page
-      //   galleryEdit.removeChild(galleryEdit);
-      //   galleryEdit.removeChild(gallery);
-      //   console.log("Its working");
-      // })
-      // .catch(error => {
-      //   console.error(error);
-      // });
+    fetch(`http://localhost:5678/api/works/${id}`, {
+      method: 'DELETE',
+      headers: new Headers({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    })
+    .catch(error => {
+      console.error(error);
     });
   }
 }
@@ -53,11 +34,10 @@ setTimeout(function() {
 btns[2].addEventListener('click', function() {
   modal.style.display = 'block';
   if(buttonsGetEvent)
-  {;
+  {
       return;
   }
   buttonsGetEvent = true;
-  generateEventOnDeleteButtons();
 });
 
 // Fermer la fenêtre modale lorsque la croix est cliquée

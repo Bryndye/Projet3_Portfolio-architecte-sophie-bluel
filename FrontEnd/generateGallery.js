@@ -18,30 +18,33 @@ const parentInstantiate = document.querySelector('.gallery')
 
 window.generateGallery = function(forEdit = false)
 {
-  fetch('http://localhost:5678/api/works')
-  .then(function(res) {
-    if (res.ok) {
-      return res.json();
-    }
-  })
-  .then(function(value) {
-    if(forEdit)
-    {
-      for(i=0; i< value.length;++i)
-      {
-        createElementEdit(value[i]);
+  if(tokenIsValid())
+  {
+    fetch('http://localhost:5678/api/works')
+    .then(function(res) {
+      if (res.ok) {
+        return res.json();
       }
-    }
-    else{
-      for(i=0; i< value.length;++i)
+    })
+    .then(function(value) {
+      if(forEdit)
       {
-        createElement(value[i]);
+        for(i=0; i< value.length;++i)
+        {
+          createElementEdit(value[i]);
+        }
       }
-    }
-  })
-  .catch(function(err) {
-    // Une erreur est survenue
-  });
+      else{
+        for(i=0; i< value.length;++i)
+        {
+          createElement(value[i]);
+        }
+      }
+    })
+    .catch(function(err) {
+      // Une erreur est survenue
+    });
+  }
 }
 
 generateGallery();
@@ -51,5 +54,5 @@ function createElement(objectValue){
 }
 
 function createElementEdit(objectValue){
-  document.getElementById('galleryEdit').innerHTML += '<figure data-id="'+objectValue.id+'"><i id="deleteIcon" class="fa fa-times delete-icon"></i><img crossorigin="anonymous" src='+objectValue.imageUrl+' alt='+objectValue.title+'><figcaption>éditer</figcaption></figure>';
+  document.getElementById('galleryEdit').innerHTML += '<figure data-id="'+objectValue.id+'"><button id="deleteIcon" onClick="deleteProject('+objectValue.id+')"><i class="fa fa-times delete-icon"></i></button><img crossorigin="anonymous" src='+objectValue.imageUrl+' alt='+objectValue.title+'><figcaption>éditer</figcaption></figure>';
 }

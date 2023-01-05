@@ -23,8 +23,6 @@ document
           }
         })
         .then(function(value) {
-          localStorage.setItem("email", user.email);
-          localStorage.setItem("password", user.password);
           localStorage.setItem("token", value.token);
           document.location.href="index.html";
         })
