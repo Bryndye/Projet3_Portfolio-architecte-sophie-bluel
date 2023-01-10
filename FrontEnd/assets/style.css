@@ -154,22 +154,31 @@ li:hover {
 .modal-content {
 	background-color: #fefefe;
 	margin: 15% auto; /* Marge centrée verticalement */
-	padding: 20px;
+	padding: 30px;
 	min-height: 50%;
 	width: 50%;
+	height: 600px;
 	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#modal-gallery, #modal-ajout{
+	height: 100%;
+	width: 80%;
 }
 #contentCenter{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 40px;
+	justify-content: space-between;
+	height: 100%;
 }
 #galleryEdit {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	row-gap: 30px;
-	height: 100%;
+	height: 400px;
 	width: 100%;
 }
 #galleryEdit figure{
@@ -180,23 +189,33 @@ li:hover {
 	height: auto;
 	width: 100%;
 }
+
+#ajoutPhoto{
+	height: 150px;
+	width: 100%;
+    background-color: rgb(232 241 246);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+/* -------------------- 
+	MODAL PROJECT 
+-------------------- */
 .delete-icon {
 	position: relative;
 	background-color: black;
 	height: 15px;
 	width: 15px;
-	font-size: 15px;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	top: 20px;
 	right:-60px;
 	color: rgb(255, 255, 255); 
 	cursor: pointer;
-  }
+}
   
-  /* Ajouter un style de survol à l'icône */
-  .delete-icon:hover {
-	color: #f00; /* Mettre la couleur de l'icône en rouge lorsque l'utilisateur passe la souris dessus */
-  }
 .close /* Style de la croix de fermeture */
 {
 	color: #aaa;
@@ -204,7 +223,6 @@ li:hover {
 	font-size: 28px;
 	font-weight: bold;
 }
-  
 .close:hover,
 .close:focus {
 	color: black;

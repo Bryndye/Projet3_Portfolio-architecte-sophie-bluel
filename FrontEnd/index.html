@@ -28,16 +28,49 @@
 	<div id="myModal" class="modal">
 		<!-- Contenu de la fenêtre modale -->
 		<div class="modal-content">
-			<!-- Le "bouton" X / css appliqué : texte -->
-			<span class="close">&times;</span>
-			<div id="contentCenter">
-				<h2>Galerie</h2>
-				<div id="galleryEdit">
+			<div style="width: 100%;">
+				<!-- Le "bouton" X / css appliqué : texte -->
+				<span class="close">&times;</span>
+				<span class="back"><i class="fa-regular fa-arrow-left"></i></span>
+			</div>
+
+			<div id="modal-gallery">
+				<div id="contentCenter">
+					<h2>Galerie</h2>
+					<div id="galleryEdit">
+					</div>
+					<div style="width: 100%; height: 2px; background-color: grey;"></div>
+					<input type="button" class="button" id="modal-ajoutBtn" value="Ajouter une photo">
+					<p style="color: red;">Supprimer la galerie</p>
 				</div>
-				<input type="submit" value="Ajouter une photo">
-				<p>Supprimer la galerie</p>
+			</div>
+			
+			<div id="modal-ajout">
+				<div id="contentCenter">
+					<h2>Ajout photo</h2>
+					<div id="ajoutPhoto">
+						<i>IMAGE</i>
+						<input type="file" id="select-image" accept="image/*">
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<div class="setInputLogin" style="width: 100%;">
+						<h3>Titre</h3>
+						<input type="text" name="inputTitre" class="inputText">
+					</div>
+					<div class="setInputLogin" style="width: 100%;">
+						<h3>Catégorie</h3>
+						<select class="inputText">
+							<option>Objets</option>
+							<option>Appartements</option>
+							<option>Hotels & restaurants</option>
+						</select>
+					</div>
+
+					<div style="width: 100%; height: 2px; background-color: grey;"></div>
+					<input type="submit" class="button" value="Valider">
+				</div>
 			</div>		
-		</div>
+		</div>	
 	</div>
 
 	<section id="introduction">

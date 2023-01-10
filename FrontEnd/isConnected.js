@@ -1,4 +1,7 @@
 function tokenIsValid(){
+  if(localStorage.getItem('token') == null){
+    return false;
+  }
   const base64Url = localStorage.getItem('token').split('.')[1];
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   const decoded = JSON.parse(atob(base64));
