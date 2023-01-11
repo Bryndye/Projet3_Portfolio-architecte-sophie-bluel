@@ -13,8 +13,8 @@ const ajoutBtn = document.getElementById('modal-ajoutBtn');
 buttonsGetEvent = false;
 
 function deleteProject(id){
-  let parent = document.querySelectorAll('[data-id="'+id+'"]');
-  console.log(parent);
+  let project = document.querySelectorAll('[data-id="'+id+'"]');
+  // console.log(parent);
 
   // Envoyer une requête DELETE pour supprimer l'image
   if(tokenIsValid())
@@ -25,15 +25,38 @@ function deleteProject(id){
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     })
-    .then(res => function(){
-      parent[0].parentNode.removeChild(parent[0]);
-      parent[1].parentNode.removeChild(parent[1]);
+    .then(function(){
+      project[0].remove();
+      project[1].remove();
     })
     .catch(error => {
       console.error(error);
     });
   }
 }
+
+
+function addProjectDynamic(data){
+  fetch('http://localhost:5678/api/works')
+    .then(function(res) {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(function(res) {
+      console.log(res.slice(-1)[0]);
+      createElement(res.slice(-1)[0]);
+      createElementEdit(res.slice(-1)[0]);
+    })
+    .catch(function(err) {
+      // Une erreur est survenue
+    });
+
+  modal.style.display = 'none';
+  modalAjout.style.display = 'none';
+  modalGallery.style.display = 'block';
+}
+
 
 function uploadProject(){
   let photoToUpload = document.querySelector('#contentCenter input[type=file]');
@@ -60,17 +83,23 @@ function uploadProject(){
     console.log('stop !');
     return;
   }
+  const data = new FormData();
+  data.append("image", photoToUpload.files[0]);
+  data.append("title", inputName.value);
+  data.append("category", id);
+
   // Envoie du projet au serveur
   fetch(`http://localhost:5678/api/works`, {
       method: 'POST',
       headers: new Headers({
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }),
-      body: {
-        "image " : photoToUpload.value,
-        "id" : id,
-        "title" : inputName.value,
-      }
+      body: data
+    })
+    .then(function(){
+      photoToUpload.value = null;
+      inputName.value = null;
+      addProjectDynamic(data);
     })
     .catch(error => {
       console.error(error);

@@ -1,20 +1,4 @@
-const parentInstantiate = document.querySelector('.gallery')
-
-// fetch('http://localhost:5678/api/works')
-//   .then(function(res) {
-//     if (res.ok) {
-//       return res.json();
-//     }
-//   })
-//   .then(function(value) {
-//     for(i=0; i< value.length;++i)
-//     {
-//         createElement(value[i]);
-//     }
-//   })
-//   .catch(function(err) {
-//     // Une erreur est survenue
-//   });
+const parentInstantiate = document.querySelector('.gallery');
 
 window.generateGallery = function(forEdit = false)
 {
@@ -35,7 +19,7 @@ window.generateGallery = function(forEdit = false)
       else{
         for(i=0; i< value.length;++i)
         {
-          createElement(value[i]);
+          createElement(value[i], parentInstantiate);
         }
       }
     })
@@ -47,7 +31,7 @@ window.generateGallery = function(forEdit = false)
 generateGallery();
 
 function createElement(objectValue){
-  parentInstantiate.innerHTML += '<figure class="box '+objectValue.category.id+'" data-id="'+objectValue.id+'"><img crossorigin="anonymous" src='+objectValue.imageUrl+' alt='+objectValue.title+'><figcaption>'+objectValue.title+'</figcaption></figure>';
+  document.querySelector('.gallery').innerHTML += '<figure class="box '+objectValue.category.id+'" data-id="'+objectValue.id+'"><img crossorigin="anonymous" src='+objectValue.imageUrl+' alt='+objectValue.title+'><figcaption>'+objectValue.title+'</figcaption></figure>';
 }
 
 function createElementEdit(objectValue){

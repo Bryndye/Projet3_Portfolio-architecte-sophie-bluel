@@ -22,6 +22,7 @@ function tokenIsValid(){
   }
 }
 
+
 let buttonLogin = document.getElementById('login');
 
 if ('token' in localStorage) {
@@ -37,9 +38,13 @@ if ('token' in localStorage) {
     }
 } 
 else {
-    // Non connecté
-    buttonLogin.addEventListener('click', function(){
-        document.location.href="login.html";
-    })
+  // Non connecté
+  let allEdit = document.getElementsByClassName('edit');
+for (let i = 0; i < allEdit.length; i++) {
+  allEdit[i].style.display = 'none';
+}
+  buttonLogin.addEventListener('click', function(){
+      document.location.href="login.html";
+  })
 }
   
