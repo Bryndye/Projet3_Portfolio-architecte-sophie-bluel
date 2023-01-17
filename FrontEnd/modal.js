@@ -14,7 +14,6 @@ buttonsGetEvent = false;
 
 function deleteProject(id){
   let project = document.querySelectorAll('[data-id="'+id+'"]');
-  // console.log(parent);
 
   // Envoyer une requête DELETE pour supprimer l'image
   if(tokenIsValid())
@@ -36,31 +35,47 @@ function deleteProject(id){
 }
 
 
-function addProjectDynamic(data){
+function addProjectDynamic(){
   fetch('http://localhost:5678/api/works')
-    .then(function(res) {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then(function(res) {
-      console.log(res.slice(-1)[0]);
-      createElement(res.slice(-1)[0]);
-      createElementEdit(res.slice(-1)[0]);
-    })
-    .catch(function(err) {
-      // Une erreur est survenue
-    });
-
+  .then(function(res) {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .then(function(res) {
+    createElement(res.slice(-1)[0]);
+    createElementEdit(res.slice(-1)[0]);
+  })
+  .catch(function(err) {
+    // Une erreur est survenue
+  });
+  
   modal.style.display = 'none';
   modalAjout.style.display = 'none';
   modalGallery.style.display = 'block';
 }
 
+//Remet par defaut le modal ajout photo
+function clearProjectOnModal(){
+  let displayImage = document.getElementById("displayImage");
+  let selectType = document.querySelector('#contentCenter select');
+  let inputName = document.querySelector('#contentCenter input[type=text]');
+
+  displayImage.value = ""; //enleve l'image une fois celle-ci publie
+  selectType.value = 'Objets';
+  img.style.display = "none";
+  inputName.value = null;
+
+  let sectionBeforeChange = document.getElementById("ajoutPhotoBeforeChange");
+  sectionBeforeChange.style.display = 'flex';
+
+  let imageInput = document.getElementById("select-image");
+  imageInput.value = "";
+}
 
 function uploadProject(){
   let photoToUpload = document.querySelector('#contentCenter input[type=file]');
-    // Récupérer les infos de la categorie et transformer en int pour envoie api
+  // Récupérer les infos de la categorie et transformer en int pour envoie api
   let selectType = document.querySelector('#contentCenter select');
   let id;
   switch (selectType.value) {
@@ -80,7 +95,7 @@ function uploadProject(){
   // si un des inputs est vide, on ne peut pas upload le projet
   if(photoToUpload.value == null || id == 0 || inputName.value == null)
   {
-    console.log('stop !');
+    // ne doit pas post car manque des informations
     return;
   }
   const data = new FormData();
@@ -97,14 +112,15 @@ function uploadProject(){
       body: data
     })
     .then(function(){
-      photoToUpload.value = null;
-      inputName.value = null;
-      addProjectDynamic(data);
+      addProjectDynamic();
+      clearProjectOnModal();
     })
     .catch(error => {
       console.error(error);
     });
 }
+
+
 
 generateGallery(true);
 // Initialiser le modal avec la gallerie en premier
@@ -117,6 +133,8 @@ document.querySelector('#contentCenter input[type=submit]').onclick  = function(
   uploadProject();
 };
 
+
+
 // Afficher la fenêtre modale lorsque le bouton est cliqué
 btns[2].addEventListener('click', function() {
   modal.style.display = 'block';
@@ -127,6 +145,17 @@ btns[2].addEventListener('click', function() {
   }
   buttonsGetEvent = true;
 });
+
+let img = document.getElementById("displayImage");
+function displayImage() {
+  let imageInput = document.getElementById("select-image");
+  document.getElementById("ajoutPhotoBeforeChange").style.display = 'none';
+  let file = imageInput.files[0];
+  img.src = URL.createObjectURL(file);
+  img.style.display = "block";
+}
+
+
 
 // Fermer la fenêtre modale lorsque la croix est cliquée
 closeSpan.onclick = function() {

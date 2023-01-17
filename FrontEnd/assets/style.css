@@ -55,8 +55,21 @@ body {
 }
 header {
 	display: flex;
+	flex-direction: column;
+	/* margin: 50px 0 */
+}
+#header{
+	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
+}
+#editBanner{
+	height: 60px;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
 section {
 	margin: 50px 0
@@ -109,12 +122,24 @@ li:hover {
 #introduction figure {
 	flex: 1
 }
-#introduction img, #introduction figure .edit {
+#introduction img {
 	display: block;
 	margin: auto;
 	width: 80%;
 }
-
+#introduction figure .edit{
+	display: block;
+	margin: auto;
+	margin-top: 15px;
+	width: 80%;
+}
+.edit{
+	display: flex;
+	gap: 5px;
+}
+.edit:focus{
+	font-style: 'bold';
+}
 #introduction article {
 	flex: 1
 }
@@ -135,6 +160,7 @@ li:hover {
 	gap: 30px;
 	margin-bottom: 1em;
 }
+
 /* -------------------- 
 	MODAL
 -------------------- */
@@ -156,7 +182,7 @@ li:hover {
 	margin: 15% auto; /* Marge centrée verticalement */
 	padding: 30px;
 	min-height: 50%;
-	width: 50%;
+	width: 600px;
 	height: 600px;
 	border-radius: 10px;
 	display: flex;
@@ -195,6 +221,12 @@ li:hover {
 	width: 100%;
     background-color: rgb(232 241 246);
 	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#ajoutPhotoBeforeChange{
+	height: 100%;
+	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
@@ -215,16 +247,24 @@ li:hover {
 	color: rgb(255, 255, 255); 
 	cursor: pointer;
 }
-  
-.close /* Style de la croix de fermeture */
+
+.close/* Style de la croix de fermeture */
 {
 	color: #aaa;
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
+	cursor: pointer;
+}
+.back{
+	color: #aaa;
+	float: left;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
 }
 .close:hover,
-.close:focus {
+.close:focus, .back:hover {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
@@ -252,7 +292,7 @@ li:hover {
 	border-radius: 60px;
 	border: 1px #1D6154 solid;
 }
-#filtres button:focus{
+#filtres button:focus, #filtres button:hover{
 	color: white;
 	background-color: #1D6154;
 	border: none;
@@ -356,6 +396,13 @@ input[type="submit"], input[type="button"]{
 	text-align: center;
 	border-radius: 60px;
 	border: 1px #1D6154 solid;
+}
+.buttonEdit{
+	color: black;
+	background-color: white;
+	border: 1px black solid;
+	font-family: 'Work Sans' ;
+
 }
 /* -------------------- 
 	FOOTER

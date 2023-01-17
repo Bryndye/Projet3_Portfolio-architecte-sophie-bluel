@@ -13,16 +13,23 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li><a href="#portfolio">projets</a></li>
-			<li><a href="#contact">contact</a></li>
-			<li id="login">login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+	<div id="editBanner">
+		<p style="color: white;"><i class='far fa-edit'></i>Mode édition</p>
+		<button class="button buttonEdit">publier les changements</button>
+	</div>
+	<div id="header">
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="#portfolio">projets</a></li>
+				<li><a href="#contact">contact</a></li>
+				<li id="login">login</li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</div>	
 </header>
 <main>
 	<div id="myModal" class="modal">
@@ -31,7 +38,7 @@
 			<div style="width: 100%;">
 				<!-- Le "bouton" X / css appliqué : texte -->
 				<span class="close">&times;</span>
-				<span class="back"><i class="fa-regular fa-arrow-left"></i></span>
+				<span class="back"><i class='fas fa-long-arrow-alt-left'></i></span>
 			</div>
 
 			<div id="modal-gallery">
@@ -49,9 +56,12 @@
 				<div id="contentCenter">
 					<h2>Ajout photo</h2>
 					<div id="ajoutPhoto">
-						<img>
-						<input type="file" id="select-image" accept="image/jpeg,image/png,image/jpg" >
-						<p>jpg, png : 4mo max</p>
+						<div id="ajoutPhotoBeforeChange">
+							<i class='fas fa-image' id="iconImage" style='font-size:36px'></i>
+							<input type="file" id="select-image" accept="image/jpeg,image/png,image/jpg" onchange="displayImage()">
+							<p>jpg, png : 4mo max</p>
+						</div>
+						<img id="displayImage" style="display: none; height: 100%;">
 					</div>
 					<div class="setInputLogin" style="width: 100%;">
 						<h3>Titre</h3>
@@ -76,10 +86,10 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
-			<p class="edit"><i class="fa-light fa-pen-to-square">modifier</i></p>
+			<p class="edit"><i class='far fa-edit'></i>modifier</p>
 		</figure>
 		<article>
-			<p class="edit"><i class="fa-light fa-pen-to-square">modifier</i></p>
+			<p class="edit"><i class='far fa-edit'></i>modifier</p>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -89,7 +99,7 @@
 	<section id="portfolio">
 		<div id="portfolioHeader">
 			<h2>Mes Projets</h2>
-			<p class="edit"><i class="fa-light fa-pen-to-square">modifier</i></p>
+			<p class="edit"><i class='far fa-edit'></i>modifier</p>
 		</div>
 
 		<div id="filtres">

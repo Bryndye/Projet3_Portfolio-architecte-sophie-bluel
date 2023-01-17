@@ -24,25 +24,25 @@ function tokenIsValid(){
 
 
 let buttonLogin = document.getElementById('login');
+let editBanner = document.getElementById('editBanner');
 
-if ('token' in localStorage) {
-    // Connecté
-    if(tokenIsValid())
-    {
-      buttonLogin.innerHTML = "logout";
-
-      buttonLogin.addEventListener('click', function(){
-          localStorage.clear();
-          document.location.href="index.html";
-      });
-    }
-} 
+if(tokenIsValid())
+{
+  buttonLogin.innerHTML = "logout";
+  editBanner.style.display = 'flex';
+  buttonLogin.addEventListener('click', function(){
+      localStorage.clear();
+      document.location.href="index.html";
+  });
+}
 else {
   // Non connecté
+  editBanner.style.display = 'none';
+
   let allEdit = document.getElementsByClassName('edit');
-for (let i = 0; i < allEdit.length; i++) {
-  allEdit[i].style.display = 'none';
-}
+  for (let i = 0; i < allEdit.length; i++) {
+    allEdit[i].style.display = 'none';
+  }
   buttonLogin.addEventListener('click', function(){
       document.location.href="login.html";
   })

@@ -35,5 +35,5 @@ function createElement(objectValue){
 }
 
 function createElementEdit(objectValue){
-  document.getElementById('galleryEdit').innerHTML += '<figure data-id="'+objectValue.id+'"><button class="delete-icon" onClick="deleteProject('+objectValue.id+')"><i class="fa fa-times"></i></button><img crossorigin="anonymous" src='+objectValue.imageUrl+' alt='+objectValue.title+'><figcaption>éditer</figcaption></figure>';
+  document.getElementById('galleryEdit').innerHTML += '<figure data-id="'+objectValue.id+'"><button class="delete-icon" onClick="deleteProject('+objectValue.id+')"><i class="fas fa-trash-alt" style="font-size:10px"></i></button><img crossorigin="anonymous" src='+objectValue.imageUrl+' alt='+objectValue.title+'><figcaption>éditer</figcaption></figure>';
 }
