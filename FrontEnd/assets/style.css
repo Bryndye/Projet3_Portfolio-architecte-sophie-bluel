@@ -160,7 +160,10 @@ li:hover {
 	gap: 30px;
 	margin-bottom: 1em;
 }
-
+header a{
+	text-decoration: none;
+	color: black;
+}
 /* -------------------- 
 	MODAL
 -------------------- */
@@ -200,6 +203,9 @@ li:hover {
 	justify-content: space-between;
 	height: 100%;
 }
+/* -------------------- 
+	GALLERY
+-------------------- */
 #galleryEdit {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
@@ -268,6 +274,14 @@ li:hover {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
+}
+#select-image{
+	color: black;
+	background-color: rgb(143 173 190);
+	height: 40px;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
 }
 /* -------------------- 
 	FILTRE
@@ -402,7 +416,6 @@ input[type="submit"], input[type="button"]{
 	background-color: white;
 	border: 1px black solid;
 	font-family: 'Work Sans' ;
-
 }
 /* -------------------- 
 	FOOTER
