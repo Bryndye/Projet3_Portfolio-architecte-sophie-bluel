@@ -43,7 +43,8 @@ function addProjectDynamic(){
     }
   })
   .then(function(res) {
-    createElement(res.slice(-1)[0]);
+    // récupère le dernier élément da la réponse donc notre envoie
+    createElement(res.slice(-1)[0]); 
     createElementEdit(res.slice(-1)[0]);
   })
   .catch(function(err) {
@@ -121,13 +122,15 @@ function uploadProject(){
 }
 
 
-
+// générer la galerie dans le modal
 generateGallery(true);
+
 // Initialiser le modal avec la gallerie en premier
 modalAjout.style.display = 'none';
 modalGallery.style.display = 'block';
 backSpan.style.display = 'none';
 
+// ajoute la fonction sur le bouton submit du modal ajout projet
 document.querySelector('#contentCenter input[type=submit]').onclick  = function()
 {
   uploadProject();
@@ -164,7 +167,7 @@ closeSpan.onclick = function() {
     modalGallery.style.display = 'block';
 }
 
-// Revenir sur la gallerie du modal
+// Revenir sur la galerie du modal
 backSpan.onclick = function() {
   modalAjout.style.display = 'none';
   modalGallery.style.display = 'block';

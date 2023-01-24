@@ -8,7 +8,7 @@ function tokenIsValid(){
   
   const currentTimestamp = Math.floor(Date.now() / 1000);
   if (decoded.exp < currentTimestamp) {
-    // console.log('The JWT has expired');
+    // console.log('The toekn has expired');
     localStorage.clear();
     buttonLogin.addEventListener('click', function(){
       alert('Vous êtes déconnectés. Veuillez vous reconnecter');
@@ -17,7 +17,7 @@ function tokenIsValid(){
     return false;
   } 
   else {
-    // console.log('The JWT is still valid');
+    // console.log('The token is still valid');
     return true;
   }
 }
@@ -26,6 +26,7 @@ function tokenIsValid(){
 let buttonLogin = document.getElementById('login');
 let editBanner = document.getElementById('editBanner');
 
+// Si le token est valid, mettre la page sous l'état "connecté"
 if(tokenIsValid())
 {
   buttonLogin.innerHTML = "logout";
@@ -36,7 +37,7 @@ if(tokenIsValid())
   });
 }
 else {
-  // Non connecté
+  // Si le token n'est pas valid, laisser la page standard
   editBanner.style.display = 'none';
 
   let allEdit = document.getElementsByClassName('edit');

@@ -283,6 +283,10 @@ header a{
 	text-align: center;
 	border-radius: 60px ;
 }
+#select-image p{
+	position: relative;
+	top: -10px;
+}
 /* -------------------- 
 	FILTRE
 -------------------- */

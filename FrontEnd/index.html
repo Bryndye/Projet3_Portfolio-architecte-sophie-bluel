@@ -36,7 +36,7 @@
 		<!-- Contenu de la fenêtre modale -->
 		<div class="modal-content">
 			<div style="width: 100%;">
-				<!-- Le "bouton" X / css appliqué : texte -->
+				<!-- Le "bouton" X -->
 				<span class="close">&times;</span>
 				<span class="back"><i class='fas fa-long-arrow-alt-left'></i></span>
 			</div>
@@ -58,7 +58,10 @@
 					<div id="ajoutPhoto">
 						<div id="ajoutPhotoBeforeChange">
 							<i class='fas fa-image' id="iconImage" style='font-size:36px'></i>
-							<input type="file" id="select-image" accept="image/jpeg,image/png,image/jpg" onchange="displayImage()">
+							<div id="select-image">
+								<input type="file"  accept="image/jpeg,image/png,image/jpg" onchange="displayImage()" style="opacity: 0;">
+								<p style="float:right">Ajout photo</p>
+							</div>
 							<p>jpg, png : 4mo max</p>
 						</div>
 						<img id="displayImage" style="display: none; height: 100%;">

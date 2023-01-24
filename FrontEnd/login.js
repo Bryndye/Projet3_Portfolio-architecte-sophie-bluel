@@ -31,8 +31,6 @@ document
         });
 });
 
-// session / localStorage   jwt/ Node -> doc session
-
 // email: sophie.bluel@test.tld
 
 // password: S0phie 
