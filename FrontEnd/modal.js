@@ -151,7 +151,7 @@ btns[2].addEventListener('click', function() {
 
 let img = document.getElementById("displayImage");
 function displayImage() {
-  let imageInput = document.getElementById("select-image");
+  let imageInput = document.querySelector("#select-image input[type=file]");
   document.getElementById("ajoutPhotoBeforeChange").style.display = 'none';
   let file = imageInput.files[0];
   img.src = URL.createObjectURL(file);
